@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <script src="angular.js"></script>
+        <script src="angular-route.js"></script>
+        <script src="script.js"></script>
+    </head>
+    <body ng-app="myApp">
+      <div ng-controller="myController">
+        <form action="makedb.php" method="post">
+            <input type="date" name="ldate" id="ldate" ng-model="ldate">
+            <br>
+            <select name="lift" id="lift" ng-model="lift">
+                <option value="BP">BP</option>
+                <option value="squat">squat</option>
+                <option value="df">df</option>
+                <option value="pull up">pull up</option>
+                <option value="overhead press">overhead press</option>
+            </select>
+            <br>
+            <input type="number" name="wt" id="wt" ng-model="wt">
+            <input type="submit" value="submit">
+        </form>
+      </div>          
+    </body>
+</html>
