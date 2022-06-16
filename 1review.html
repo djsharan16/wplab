@@ -1,0 +1,95 @@
+<!--Text Editior using AngularJS-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Text Editor</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+		<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+        <link rel="stylesheet" href="moviereview.css">
+	</head>
+    
+	<body ng-app="myApp" ng-controller="myCtrl">
+    <center><b><h1>S&S</h1></b></center>
+    <center><h4>A Montage of Film Criticism and Theology</h4></center>
+    <hr>
+    <hr>
+    <div class="topnav">
+        <a class="active" href="home.html">HOME</a>
+        <a href="moviereview.html">MOVIE REVIEWS</a>
+        <a href="toplists.html">TOP LISTS</a>
+        <a href="contact.html">CONTACT US</a>
+      </div>
+    <hr>
+    <hr>
+
+    <center><h2>Spider-Man Review</h2></center>
+    <center><hr class="hr1"></center>
+    <br><br>
+
+		<div style="background-color:#fff;">
+			<center>
+				<h2 style="background-color:#fff; color:green">Text Editor</h2><br><br>
+				<div>
+					<button id="n_file" onclick="window.location.reload();">New File</button>
+					<button id="ct" ng-click="cut()">Cut</button>
+					<button id="cpy" ng-click="cpy()">Copy</button>
+					<button id="pst" ng-click="pst()">Paste</button>
+				</div><br>
+			</center>
+		</div>
+		<form>
+			<center>
+				<h2>Choose a File: <b><input type="file" id="file_read"></b></h2>
+				<textarea id="txtarea" placeholder="Enter text"></textarea><br><br>
+				<b>Filename: </b><input type="text" id="f_name" ng-click="save_file()">
+				<input type="button" id="f_name" onclick="save_file()" value="Save File">
+				</div>
+			</center>
+		</form>
+		<script>
+			document.getElementById('file_read').addEventListener('change', function(){
+				var f_read = new FileReader();
+				f_read.onload = function(){
+					document.getElementById('txtarea').textContent = f_read.result;
+				}
+				f_read.readAsText(this.files[0]);
+			})
+			
+			function save_file(){
+				var filename = document.getElementById('f_name').value;
+				var text = document.getElementById('txtarea').value;
+				var blob = new Blob([text],{type:'text/plain'});
+				var link = document.createElement("a");
+				link.download = filename;
+				link.href = window.URL.createObjectURL(blob);
+				document.body.appendChild(link);
+				link.click();
+				setTimeout(() => {
+					document.body.removeChild(link);
+					window.URL.revokeObjectURL(link.href);
+				}, 100);
+			}
+			
+			var app = angular.module('myApp',[]);
+			app.controller('myCtrl', function($scope){
+				$scope.cut=function(){
+					document.getElementById('txtarea').select();
+					document.execCommand('cut');
+				}
+				$scope.cpy=function(){
+					document.getElementById('txtarea').select();
+					document.execCommand('copy');
+				}
+				$scope.pst=function(){
+					navigator.clipboard.readText()
+                        .then(txt => {
+                            document.getElementById('txtarea').value = txt;
+                        })
+                        .catch(err => {
+                            alert("Please allow clipboard access permission");
+                        });
+				}
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="angular.min.js"></script>
+    <script src="ex4.js"></script>
+    <link rel="stylesheet" href="ex4.css">
+    <title>List and Grid Layout</title>
+</head>
+<body>
+    <div ng-app="MyApp" ng-controller="MyController">
+        <div class="bar">
+            
+            <a class="list-icon" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'"></a>
+            <a class="grid-icon" ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'">
+            </a>
+        </div>
+        <ul ng-show="layout == 'grid'" class="grid">
+            <li ng-repeat="i in Data"><img ng-src="{{i.Path}}" height="300px" width="200px" /></li>
+        </ul>
+        <ul ng-show="layout == 'list'" class="list">
+            <li ng-repeat="i in Data">
+                <img ng-src="{{i.Path}}" height="200px" width="150px" />
+                <p>{{i.Name}}</p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="angular.min.js"></script>
+    <script src="toplist.js"></script>
+    <link rel="stylesheet" href="toplists.css">
+    <title>Top Lists</title>
+</head>
+<body ng-app="myApp">
+    <center><b><h1>S&S</h1></b></center>
+    <center><h4>A Montage of Film Criticism and Theology</h4></center>
+    <hr>
+    <hr>
+    <div class="topnav">
+        <a class="active" href="home.html">HOME</a>
+        <a href="moviereview.html">MOVIE REVIEWS</a>
+        <a href="toplists.html">TOP LISTS</a>
+        <a href="contact.html">CONTACT US</a>
+      </div>
+    <hr>
+    <hr>
+
+    
+    <center><h2>Top Lists</h2></center>
+    <center><hr class="hr1"></center>
+
+    <div ng-controller="myController">
+        Search By: <input type="text" ng-model="search">
+        <br>
+        <br>
+        <div class="table1">
+        <table>
+            <tr>
+                <thead>
+                    <td>Film Name</td>
+                    <td>Release Year</td>
+                    <td>Ratings</td>
+                </thead>
+            </tr>
+            <tr ng-repeat="x in films | filter:search">
+                <td>{{x.filmname}}</td>
+                <td>{{x.yearofrelease}}</td>
+                <td>{{x.Ratings}}</td>
+            </tr>
+            
+        </table>
+    </div>
+    </div>
+
+
+</body>
+
+<footer>
+    <hr>
+    <hr>
+    <center><h4 class="ft">Copyright &copy; 2022 &diams;	S&S</h4></center>
+    <hr>
+    <hr>
+</footer>  
+
+</html>

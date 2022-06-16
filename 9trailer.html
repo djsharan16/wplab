@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trailer</title>
+    <style>
+        #bordering {
+         border: 25px solid transparent;
+         padding: 30px;
+         border-image: url(border.jpg) 60 round;
+         }
+    </style>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="angular.min.js"></script>
+    <link rel="stylesheet" href="moviereview.css">
+    <title>Movie Review</title>
+</head>
+<body>
+
+    <center><b><h1>S&S</h1></b></center>
+    <center><h4>A Montage of Film Criticism and Theology</h4></center>
+    <hr>
+    <hr>
+    <div class="topnav">
+        <a class="active" href="home.html">HOME</a>
+        <a href="moviereview.html">MOVIE REVIEWS</a>
+        <a href="toplists.html">TOP LISTS</a>
+        <a href="contact.html">CONTACT US</a>
+      </div>
+    <hr>
+    <hr>
+
+    <center><h2>Hulk Trailer</h2></center>
+    <center><hr class="hr1"></center>
+    <br><br>
+
+    <body ng-app="myApp" ng-controller="vidctrl">
+        <div id="bordering" align="center">
+        <button ng-click="playVid()" > <i class="fa fa-play"> </i>Play</button>
+        <button ng-click="pauseVid()" > <i class="fa fa-pause"></i>Pause</button>
+        <button ng-click="makeBig()" ><i class="fa fa-expand"></i>Expand</button>
+        <button ng-click="makeSmall()" ><i class="fa fa-compress"></i>Compress</button>
+        <button ng-click="makeNormal()" >Original Size</button>
+        <button ng-click="skip(10)" > <i class="fa fa-step-forward"></i>Skip</button>
+        <button ng-click="restart()" ><i class="fa fa-reply"></i>Replay</button>
+        <button ng-click="unmute()" ><i class="fa fa-volume-off"></i>Vol-Up</button>
+        <button ng-click="mute()" ><i class="fa fa-volume-up"></i>Vol-Down</button>
+        <button ng-click="speed()" >2x</button>
+        <button ng-click="speeds()" >3x</button>
+        <button ng-click="normal()" >1x</button>
+        <br>
+        <video id="video1" width="420" height="300">
+        <source src="Videos/9trailer.mp4" type="video/mp4">
+        </video>
+        </div>
+        <script>
+         var app= angular.module('myApp',[]);
+         app.controller('vidctrl',function($scope){
+         var vid=document.getElementById("video1");
+         $scope.playVid = function(){
+         vid.play();
+        }
+        $scope. pauseVid= function() {
+         vid.pause();
+        }
+        $scope. makeBig = function() {
+         vid.width = 960;
+         vid.height=600;
+         }
+        $scope. makeSmall = function() {
+         vid.width = 320;
+         vid.height=200;
+         }
+        $scope. makeNormal = function() {
+         vid.width = 420;
+         vid.height=300;
+         }
+        $scope. skip = function(value) {
+         vid.currentTime += value;
+        
+         }
+        $scope.restart= function() {
+         vid.currentTime = 0;
+         }
+        $scope. mute= function() {
+         vid.muted=true;
+         }
+        $scope. unmute= function() {
+         vid.muted=false;
+         }
+        $scope. speed= function() {
+         vid.playbackRate= 2;
+         }
+        $scope. speeds= function() {
+         vid.playbackRate= 3;
+         }
+        $scope. normal= function() {
+         vid.playbackRate= 1;
+         }
+        });
+        </script>
+    
+    
+</body>
+
+<footer>
+    <br>
+    <hr>
+    <hr>
+    <center><h4 class="ft">Copyright &copy; 2022 &diams;	S&S</h4></center>
+    <hr>
+    <hr>
+</footer>  
+
+</html>
+</body>
+</html>

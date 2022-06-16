@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contact.css">
+    <script src="formvalidate.js"></script>
+    <title>Contact Us</title>
+</head>
+<body>
+    <center><b><h1>S&S</h1></b></center>
+    <center><h4>A Montage of Film Criticism and Theology</h4></center>
+    <hr>
+    <hr>
+    <div class="topnav">
+        <a class="active" href="home.html">HOME</a>
+        <a href="moviereview.html">MOVIE REVIEWS</a>
+        <a href="toplists.html">TOP LISTS</a>
+        <a href="contact.html">CONTACT US</a>
+      </div>
+    <hr>
+    <hr>
+
+    <center><h2>Contact Us</h2></center>
+    <center><hr class="hr1"></center>
+    <br><br>
+
+    <form name="myform" method="post" onsubmit="return validateform()" action="http://localhost/users.php">
+        First Name : <input type="text" placeholder="First Name" name="fname">
+        Last Name : <input type="text" placeholder="Last Name" name="lname">
+        Email : <input type="email" placeholder="Email-Address" name="email">
+        Message : <textarea rows="8" cols="50" name="comment">
+        Enter text here...</textarea>
+        <input class="button" type="submit" value="Submit">
+    </form>
+
+</body>
+
+<footer>
+    <hr>
+    <hr>
+    <center><h4 class="ft">Copyright &copy; 2022 &diams;	S&S</h4></center>
+    <hr>
+    <hr>
+</footer>
+
+</html>

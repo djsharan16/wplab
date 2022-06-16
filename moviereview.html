@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="angular.min.js"></script>
+    <script src="ex4.js"></script>
+    <link rel="stylesheet" href="moviereview.css">
+    <title>Movie Review</title>
+</head>
+<body>
+
+    <center><b><h1>S&S</h1></b></center>
+    <center><h4>A Montage of Film Criticism and Theology</h4></center>
+    <hr>
+    <hr>
+    <div class="topnav">
+        <a class="active" href="home.html">HOME</a>
+        <a href="moviereview.html">MOVIE REVIEWS</a>
+        <a href="toplists.html">TOP LISTS</a>
+        <a href="contact.html">CONTACT US</a>
+      </div>
+    <hr>
+    <hr>
+
+    <center><h2>Movie Reviews</h2></center>
+    <center><hr class="hr1"></center>
+    <br><br>
+
+
+    <div ng-app="MyApp" ng-controller="MyController">
+        <div class="bar">
+            <a class="list-icon" ng-class="{active: layout == 'list'}" ng-click="layout = 'list'"></a>
+            <a class="grid-icon" ng-class="{active: layout == 'grid'}" ng-click="layout = 'grid'"></a>
+        </div>
+        <ul ng-show="layout == 'grid'" class="grid">
+            <li ng-repeat="i in Data"><img ng-src="{{i.Path}}" height="300px" width="200px" /></li>
+        </ul>
+        <ul ng-show="layout == 'list'" class="list">
+            <li ng-repeat="i in Data">
+                <img ng-src="{{i.Path}}" height="200px" width="150px" />
+                <p>{{i.Name}}</p>
+                <br>
+                <a class="names" href="{{i.Trailer}}">Trailer</a>
+                <br>
+                <br>
+                <a class="names" href="{{i.Cast}}">Cast</a>
+                <br>
+                <br>
+                <a class="names" href="{{i.Review}}">Review</a>
+                <br>
+                <br>
+            </li>
+        </ul>
+    </div>
+    
+</body>
+
+<footer>
+    <br>
+    <hr>
+    <hr>
+    <center><h4 class="ft">Copyright &copy; 2022 &diams;	S&S</h4></center>
+    <hr>
+    <hr>
+</footer>  
+
+<script>
+    let app = angular.module('myApp', ['ngRoute']);
+    app.config(function($routeProvider) {
+     $routeProvider
+     .when("/trailer",{
+     templateUrl:"1trailer.html"
+    })
+     .when("/cast", {
+     templateUrl:"1cast.html"
+     })
+     .when("/review", {
+     templateUrl : "1review.html"
+     });
+    });
+    </script>
+     </body>
+    </html> 
+</html>
