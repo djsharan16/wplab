@@ -1,0 +1,36 @@
+<html>
+    <body>
+    <h5>Who invented Javascript?</h5>
+    <input type="radio" name="answer1" value="correct"><span>a: Douglas Crockford</span>
+    <input type="radio" name="answer1" value="wrong" ><span>b: Sheryl Sandberg</span>
+    <input type="radio" name="answer1"value="wrong" ><span>c: Brendan Eich</span>
+    <h5>Which one of these is a JS package manager?</h5>
+    <input type="radio" name="answer2"value="wrong"><span>a: Node.js</span>
+    <input type="radio" name="answer2"value="wrong"><span>b: Typescript</span>
+    <input type="radio"  name="answer2"value="correct"><span>c: NPM</span>
+    <input type="submit" onclick=" check()">
+    <h4 id="result"></h4>
+</body>
+<script>     
+    function check(){
+        var correct=0;
+        for(var i=0;i<=2;i++){
+            var radName=document.getElementsByName('answer'+i);
+            for(var j=0;j<radName.length;j++){
+                var radValue=radName[j];
+               if(radValue.checked){
+                   if(radValue.value=='correct'){
+                       correct++;
+                       radValue.nextSibling.style.color='green';
+
+                   }else{
+                    radValue.nextSibling.style.color='red';
+
+                   }
+               }
+            }
+        }
+        document.getElementById('result').innerHTML='Answer correct:'+correct;
+    }
+</script>
+</html>
